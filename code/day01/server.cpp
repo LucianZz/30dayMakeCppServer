@@ -3,6 +3,16 @@
 #include <arpa/inet.h>
 #include <string.h>
 
+void foo() {
+    int array[10];
+    int i = get();
+    // i = 9;
+    if (i > 8 && i <= length(array)) {  // Shoud be i < length(array)
+        array[i] = 1;  // defect: array[10] overflow
+    }
+    array[i] = 1;  // defect: array[10] overflow
+}
+
 int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
